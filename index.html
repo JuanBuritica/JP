@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JP | Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
@@ -29,12 +32,12 @@
                     },
                     keyframes: {
                         'slow-rotate': { 'from': { transform: 'rotate(45deg)' }, 'to': { transform: 'rotate(405deg)' } },
-                        'ice-glint': { 
-                            '0%': { transform: 'translateX(-150%) translateY(-150%) rotate(45deg)', opacity: 0 }, 
-                            '10%': { opacity: 0 }, 
-                            '25%': { opacity: 0.6 }, 
+                        'ice-glint': {
+                            '0%': { transform: 'translateX(-150%) translateY(-150%) rotate(45deg)', opacity: 0 },
+                            '10%': { opacity: 0 },
+                            '25%': { opacity: 0.6 },
                             '40%': { transform: 'translateX(150%) translateY(150%) rotate(45deg)', opacity: 0 },
-                            '100%': { transform: 'translateX(150%) translateY(150%) rotate(45deg)', opacity: 0 } 
+                            '100%': { transform: 'translateX(150%) translateY(150%) rotate(45deg)', opacity: 0 }
                         },
                         'pulse-glow': { '0%, 100%': { opacity: 0.2, transform: 'scale(1)' }, '50%': { opacity: 0.5, transform: 'scale(1.05)' } }
                     }
@@ -43,32 +46,79 @@
         }
     </script>
     <style>
-        body { background-color: #000; color: #fff; overflow-x: hidden; }
-        .text-glow-white { text-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.3); }
-        .crystal-light { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
-        canvas { display: block; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .text-glow-white {
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .crystal-light {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         #main-header {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(40px) saturate(200%) brightness(1.1);
         }
+
         #dropdown-menu {
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(50px) saturate(220%) brightness(1.1);
         }
-        .menu-link { transition: all 0.3s ease; }
+
+        .menu-link {
+            transition: all 0.3s ease;
+        }
 
         /* Form animation */
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-        .animate-success { animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .animate-success {
+            animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -79,56 +129,81 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
+
 <body class="selection:bg-white selection:text-black">
     <div class="noise-overlay"></div>
 
     <!-- Intro Overlay -->
-    <div id="intro-overlay" class="fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center cursor-pointer transition-all duration-[1.2s] ease-[cubic-bezier(0.85,0,0.15,1)]">
+    <div id="intro-overlay"
+        class="fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center cursor-pointer transition-all duration-[1.2s] ease-[cubic-bezier(0.85,0,0.15,1)]">
         <canvas id="particle-canvas" class="absolute inset-0 pointer-events-none"></canvas>
         <div class="relative z-10 flex flex-col items-center text-center group select-none">
             <div class="relative w-[240px] h-[240px] mb-16 flex items-center justify-center">
-                <div class="absolute inset-0 rotate-45 bg-white/[0.05] backdrop-blur-[120px] animate-slow-rotate border border-white/40 shadow-[0_0_100px_rgba(255,255,255,0.1)]"></div>
+                <div
+                    class="absolute inset-0 rotate-45 bg-white/[0.05] backdrop-blur-[120px] animate-slow-rotate border border-white/40 shadow-[0_0_100px_rgba(255,255,255,0.1)]">
+                </div>
                 <div id="three-logo-container" class="relative z-10 w-full h-full"></div>
             </div>
             <div class="space-y-4">
-                <h2 class="text-sm tracking-[1.4em] font-bold uppercase text-white ml-[1.4em] text-glow-white">JP BURITICÁ</h2>
-                <p class="text-[10px] tracking-[0.8em] font-light text-white uppercase ml-[0.8em] opacity-70">Software Engineer</p>
+                <h2 class="text-sm tracking-[1.4em] font-bold uppercase text-white ml-[1.4em] text-glow-white">JP
+                    BURITICÁ</h2>
+                <p class="text-[10px] tracking-[0.8em] font-light text-white uppercase ml-[0.8em] opacity-70">Software
+                    Engineer</p>
                 <div class="pt-12">
-                   <p id="initialize-text" class="text-[11px] tracking-[0.5em] font-bold uppercase text-white/40">Initializing...</p>
+                    <p id="initialize-text" class="text-[11px] tracking-[0.5em] font-bold uppercase text-white/40">
+                        Initializing...</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Header -->
-    <header id="main-header" class="fixed top-8 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] lg:w-[calc(100%-160px)] max-w-7xl z-[1000] flex justify-between items-center px-8 lg:px-12 rounded-[2.5rem] h-24 hidden">
-        <div class="flex items-center gap-6 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <header id="main-header"
+        class="fixed top-8 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] lg:w-[calc(100%-160px)] max-w-7xl z-[1000] flex justify-between items-center px-8 lg:px-12 rounded-[2.5rem] h-24 hidden">
+        <div class="flex items-center gap-6 group cursor-pointer"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             <div class="relative w-12 h-12 flex items-center justify-center">
-                <div id="logo-box" class="absolute inset-0 rotate-45 rounded-xl border-2 transition-all duration-500 animate-slow-rotate"></div>
-                <span id="logo-initials" class="header-text relative z-10 text-[13px] font-black tracking-tighter transition-colors duration-500">JP</span>
+                <div id="logo-box"
+                    class="absolute inset-0 rotate-45 rounded-xl border-2 transition-all duration-500 animate-slow-rotate">
+                </div>
+                <span id="logo-initials"
+                    class="header-text relative z-10 text-[13px] font-black tracking-tighter transition-colors duration-500">JP</span>
             </div>
             <div class="flex flex-col">
-                <span class="header-text text-[15px] font-black tracking-[0.4em] uppercase transition-colors duration-500 leading-none">JP BURITICÁ</span>
-                <span class="header-text text-[9px] tracking-[0.3em] uppercase font-bold mt-2 transition-colors duration-500 opacity-60">SOFTWARE ENGINEER</span>
+                <span
+                    class="header-text text-[15px] font-black tracking-[0.4em] uppercase transition-colors duration-500 leading-none">JP
+                    BURITICÁ</span>
+                <span
+                    class="header-text text-[9px] tracking-[0.3em] uppercase font-bold mt-2 transition-colors duration-500 opacity-60">SOFTWARE
+                    ENGINEER</span>
             </div>
         </div>
 
-        <button id="menu-toggle" class="flex items-center gap-4 px-10 py-4 rounded-2xl border-2 transition-all duration-500 font-black group">
+        <button id="menu-toggle"
+            class="flex items-center gap-4 px-10 py-4 rounded-2xl border-2 transition-all duration-500 font-black group">
             <span class="text-[11px] uppercase tracking-[0.4em]">Menu</span>
             <i data-lucide="menu" class="w-5 h-5 transition-transform group-hover:rotate-12"></i>
         </button>
 
         <!-- Menu Dropdown -->
-        <div id="dropdown-menu" class="absolute top-full right-0 mt-8 w-80 border-2 rounded-[2.5rem] overflow-hidden opacity-0 scale-95 pointer-events-none origin-top-right shadow-2xl">
+        <div id="dropdown-menu"
+            class="absolute top-full right-0 mt-8 w-80 border-2 rounded-[2.5rem] overflow-hidden opacity-0 scale-95 pointer-events-none origin-top-right shadow-2xl">
             <div class="p-8 space-y-2">
-                <a href="#about" class="menu-link group flex items-center justify-between px-6 py-6 rounded-2xl transition-all text-[12px] font-black tracking-[0.2em] uppercase">
+                <a href="#about"
+                    class="menu-link group flex items-center justify-between px-6 py-6 rounded-2xl transition-all text-[12px] font-black tracking-[0.2em] uppercase">
                     <span class="group-hover:translate-x-3 transition-all">About & Experience</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all"></i>
                 </a>
-                <a href="#contact-section" class="menu-link group flex items-center justify-between px-6 py-6 rounded-2xl transition-all text-[12px] font-black tracking-[0.2em] uppercase">
+                <a href="#contact-section"
+                    class="menu-link group flex items-center justify-between px-6 py-6 rounded-2xl transition-all text-[12px] font-black tracking-[0.2em] uppercase">
                     <span class="group-hover:translate-x-3 transition-all">Contact</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all"></i>
+                </a>
+                <a href="master.html"
+                    class="menu-link group flex items-center justify-between px-6 py-6 rounded-2xl transition-all text-[12px] font-black tracking-[0.2em] uppercase">
+                    <span class="group-hover:translate-x-3 transition-all">Master/Projects</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all"></i>
                 </a>
             </div>
@@ -141,16 +216,22 @@
             <div class="container mx-auto max-w-6xl">
                 <div class="grid lg:grid-cols-2 gap-24 items-start">
                     <div class="space-y-12">
-                        <div class="relative aspect-[4/5] w-full bg-[#0a0a0a] overflow-hidden rounded-sm border border-white/10 group shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
-                            <img src="https://lh3.googleusercontent.com/d/1o2G0PF8h4YiGlKuTLpi59YhQy2DR4-Q4" class="w-full h-full object-cover grayscale brightness-75 transition-all duration-[2s] group-hover:grayscale-0 group-hover:scale-105" alt="Juan Pablo Buriticá Portrait">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                        <div
+                            class="relative aspect-[4/5] w-full bg-[#0a0a0a] overflow-hidden rounded-sm border border-white/10 group shadow-[0_40px_100px_rgba(0,0,0,0.8)]">
+                            <img src="https://lh3.googleusercontent.com/d/1o2G0PF8h4YiGlKuTLpi59YhQy2DR4-Q4"
+                                class="w-full h-full object-cover grayscale brightness-75 transition-all duration-[2s] group-hover:grayscale-0 group-hover:scale-105"
+                                alt="Juan Pablo Buriticá Portrait">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                            </div>
                             <div class="absolute bottom-16 left-12 text-white space-y-4">
                                 <div class="flex items-center gap-4">
                                     <div class="w-10 h-[1.5px] bg-white"></div>
                                     <p class="text-[10px] tracking-[0.5em] uppercase font-black">Software Engineer</p>
                                 </div>
                                 <h1 class="text-5xl sm:text-6xl tracking-tighter uppercase leading-[0.85]">
-                                    <span class="font-light">JUAN PABLO</span><br><span class="font-black">BURITICÁ</span>
+                                    <span class="font-light">JUAN PABLO</span><br><span
+                                        class="font-black">BURITICÁ</span>
                                 </h1>
                             </div>
                         </div>
@@ -159,19 +240,32 @@
                         <div class="grid grid-cols-2 gap-x-8 gap-y-12 pt-12 border-t border-white/20 relative">
                             <div class="absolute -top-[1px] left-0 w-12 h-[2px] bg-white"></div>
                             <div class="space-y-6">
-                                <h4 class="text-[9px] uppercase tracking-[0.4em] font-black text-white">Technical Core</h4>
+                                <h4 class="text-[9px] uppercase tracking-[0.4em] font-black text-white">Technical Core
+                                </h4>
                                 <ul class="space-y-4">
-                                    <li class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">REST APIs & Webhooks</li>
-                                    <li class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">Coupa P2P / BSM</li>
-                                    <li class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">SQL & DAX</li>
+                                    <li
+                                        class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">
+                                        REST APIs & Webhooks</li>
+                                    <li
+                                        class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">
+                                        Coupa P2P / BSM</li>
+                                    <li
+                                        class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">
+                                        SQL & DAX</li>
                                 </ul>
                             </div>
                             <div class="space-y-6">
                                 <h4 class="text-[9px] uppercase tracking-[0.4em] font-black text-white">Expertise</h4>
                                 <ul class="space-y-4">
-                                    <li class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">Solution Design</li>
-                                    <li class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">BI Architecture</li>
-                                    <li class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">AI Automation</li>
+                                    <li
+                                        class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">
+                                        Solution Design</li>
+                                    <li
+                                        class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">
+                                        BI Architecture</li>
+                                    <li
+                                        class="text-[11px] font-light text-white tracking-wider flex items-center gap-2.5">
+                                        AI Automation</li>
                                 </ul>
                             </div>
                         </div>
@@ -181,12 +275,15 @@
                         <div class="pl-10 relative">
                             <div class="absolute left-0 top-1.5 w-[1px] h-full bg-white/20"></div>
                             <p class="text-3xl font-extralight text-white/90 leading-tight tracking-tight">
-                                Designing high-performance <span class="text-white font-bold text-glow-white">SaaS ecosystems</span> that connect core business logic with global ERP infrastructure.
+                                Designing high-performance <span class="text-white font-bold text-glow-white">SaaS
+                                    ecosystems</span> that connect core business logic with global ERP infrastructure.
                             </p>
                         </div>
 
                         <div class="space-y-12">
-                            <h3 id="curriculum-section" class="text-[10px] uppercase tracking-[0.5em] font-black text-white/40 border-b border-white/10 pb-4 scroll-mt-40">Curriculum Vitae</h3>
+                            <h3 id="curriculum-section"
+                                class="text-[10px] uppercase tracking-[0.5em] font-black text-white/40 border-b border-white/10 pb-4 scroll-mt-40">
+                                Curriculum Vitae</h3>
                             <div id="experience-list" class="space-y-12">
                                 <!-- JS Populated -->
                             </div>
@@ -202,71 +299,101 @@
                 <div class="grid lg:grid-cols-12 gap-24 items-stretch">
                     <div class="lg:col-span-5 flex flex-col justify-center space-y-16">
                         <div class="space-y-8">
-                            <h2 class="text-7xl font-extralight tracking-tighter leading-[0.9]">Let's <br><span class="italic font-serif">Collaborate</span>.</h2>
+                            <h2 class="text-7xl font-extralight tracking-tighter leading-[0.9]">Let's <br><span
+                                    class="italic font-serif">Collaborate</span>.</h2>
                             <p class="text-xl font-light text-black/60">Looking to work together? Please reach out.</p>
                         </div>
                         <div class="pt-8 border-t border-black/5 space-y-12">
                             <div>
-                                <p class="text-[10px] uppercase tracking-[0.4em] font-black opacity-30 mb-4">Direct Inquiry</p>
-                                <a href="mailto:juanpabloburiticaruiz@gmail.com" class="text-2xl font-medium hover:underline break-words">juanpabloburiticaruiz@gmail.com</a>
+                                <p class="text-[10px] uppercase tracking-[0.4em] font-black opacity-30 mb-4">Direct
+                                    Inquiry</p>
+                                <a href="mailto:juanpabloburiticaruiz@gmail.com"
+                                    class="text-2xl font-medium hover:underline break-words">juanpabloburiticaruiz@gmail.com</a>
                             </div>
-                            
+
                             <div class="flex flex-wrap items-center gap-10">
-                                <a href="https://www.linkedin.com/in/juanburitica/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-black/60 hover:text-black transition-all">
-                                    <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                                <a href="https://www.linkedin.com/in/juanburitica/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group flex items-center gap-3 text-black/60 hover:text-black transition-all">
+                                    <i data-lucide="linkedin"
+                                        class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                                     <span class="text-[10px] uppercase tracking-[0.2em] font-black">LinkedIn</span>
                                 </a>
-                                <a href="https://github.com/JuanBuritica" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-black/60 hover:text-black transition-all">
-                                    <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                                <a href="https://github.com/JuanBuritica" target="_blank" rel="noopener noreferrer"
+                                    class="group flex items-center gap-3 text-black/60 hover:text-black transition-all">
+                                    <i data-lucide="github"
+                                        class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                                     <span class="text-[10px] uppercase tracking-[0.2em] font-black">GitHub</span>
                                 </a>
-                                <a href="https://drive.google.com/uc?export=download&id=1FyQb3te1oW0zKGF9bepsnu33HBwDdRZS" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-black/60 hover:text-black transition-all">
-                                    <i data-lucide="file-down" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                                <a href="https://drive.google.com/uc?export=download&id=1FyQb3te1oW0zKGF9bepsnu33HBwDdRZS"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="group flex items-center gap-3 text-black/60 hover:text-black transition-all">
+                                    <i data-lucide="file-down"
+                                        class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                                     <span class="text-[10px] uppercase tracking-[0.2em] font-black">Download CV</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="lg:col-span-7" id="form-container">
-                        <div class="crystal-light p-12 rounded-[2.5rem] border border-black/5 shadow-2xl h-full flex flex-col justify-between overflow-hidden">
+                        <div
+                            class="crystal-light p-12 rounded-[2.5rem] border border-black/5 shadow-2xl h-full flex flex-col justify-between overflow-hidden">
                             <!-- Form Wrapper -->
                             <div id="contact-form-wrapper" class="w-full h-full flex flex-col justify-between">
                                 <form id="contact-form" class="grid gap-12">
                                     <!-- Web3Forms Access Key - Active -->
                                     <input type="hidden" name="access_key" value="79050d99-e386-4b36-9686-3fd1b16a1ccd">
-                                    
+
                                     <div class="space-y-4">
-                                        <label class="text-[10px] uppercase tracking-[0.4em] font-black text-black">Full Name</label>
-                                        <input type="text" name="name" required class="w-full bg-transparent border-b-2 border-black/10 py-4 focus:outline-none focus:border-black transition-all text-black" placeholder="Jane Doe">
+                                        <label class="text-[10px] uppercase tracking-[0.4em] font-black text-black">Full
+                                            Name</label>
+                                        <input type="text" name="name" required
+                                            class="w-full bg-transparent border-b-2 border-black/10 py-4 focus:outline-none focus:border-black transition-all text-black"
+                                            placeholder="Jane Doe">
                                     </div>
                                     <div class="space-y-4">
-                                        <label class="text-[10px] uppercase tracking-[0.4em] font-black text-black">Email Address</label>
-                                        <input type="email" name="email" required class="w-full bg-transparent border-b-2 border-black/10 py-4 focus:outline-none focus:border-black transition-all text-black" placeholder="jane@example.com">
+                                        <label
+                                            class="text-[10px] uppercase tracking-[0.4em] font-black text-black">Email
+                                            Address</label>
+                                        <input type="email" name="email" required
+                                            class="w-full bg-transparent border-b-2 border-black/10 py-4 focus:outline-none focus:border-black transition-all text-black"
+                                            placeholder="jane@example.com">
                                     </div>
                                     <div class="space-y-4">
-                                        <label class="text-[10px] uppercase tracking-[0.4em] font-black text-black">What are you looking for?</label>
-                                        <textarea name="message" rows="4" required class="w-full bg-transparent border-b-2 border-black/10 py-4 focus:outline-none focus:border-black transition-all text-black resize-none" placeholder="Describe your project or inquiry..."></textarea>
+                                        <label class="text-[10px] uppercase tracking-[0.4em] font-black text-black">What
+                                            are you looking for?</label>
+                                        <textarea name="message" rows="4" required
+                                            class="w-full bg-transparent border-b-2 border-black/10 py-4 focus:outline-none focus:border-black transition-all text-black resize-none"
+                                            placeholder="Describe your project or inquiry..."></textarea>
                                     </div>
                                     <div class="pt-8">
-                                        <button type="submit" id="submit-btn" class="w-full bg-black text-white py-6 rounded-2xl uppercase tracking-[0.5em] font-black hover:scale-[1.02] transition-all flex items-center justify-between px-10">
+                                        <button type="submit" id="submit-btn"
+                                            class="w-full bg-black text-white py-6 rounded-2xl uppercase tracking-[0.5em] font-black hover:scale-[1.02] transition-all flex items-center justify-between px-10">
                                             <span id="btn-text">SUBMIT</span>
                                             <i data-lucide="arrow-right" class="w-5 h-5"></i>
                                         </button>
                                     </div>
-                                    <div id="form-error" class="hidden text-red-600 text-[10px] uppercase tracking-widest font-black text-center">Transmission Error. Please try again.</div>
+                                    <div id="form-error"
+                                        class="hidden text-red-600 text-[10px] uppercase tracking-widest font-black text-center">
+                                        Transmission Error. Please try again.</div>
                                 </form>
                             </div>
 
                             <!-- Success Message Wrapper (Hidden by default) -->
-                            <div id="success-message-wrapper" class="hidden w-full h-full flex flex-col items-center justify-center text-center space-y-10 animate-success">
+                            <div id="success-message-wrapper"
+                                class="hidden w-full h-full flex flex-col items-center justify-center text-center space-y-10 animate-success">
                                 <div class="w-24 h-24 rounded-full bg-black flex items-center justify-center shadow-xl">
                                     <i data-lucide="check-circle" class="w-12 h-12 text-white"></i>
                                 </div>
                                 <div class="space-y-4">
                                     <h3 class="text-3xl font-black uppercase tracking-tight">Thank You</h3>
-                                    <p class="text-black/60 font-light max-w-xs mx-auto">Thank you for reaching out. I've received your message and truly appreciate your interest—I will get back to you within 24 hours.</p>
+                                    <p class="text-black/60 font-light max-w-xs mx-auto">Thank you for reaching out.
+                                        I've received your message and truly appreciate your interest—I will get back to
+                                        you within 24 hours.</p>
                                 </div>
-                                <button id="reset-form-btn" class="text-[10px] uppercase tracking-[0.4em] font-black border-b-2 border-black/20 pb-1 hover:border-black transition-all">Re-initialize Form</button>
+                                <button id="reset-form-btn"
+                                    class="text-[10px] uppercase tracking-[0.4em] font-black border-b-2 border-black/20 pb-1 hover:border-black transition-all">Re-initialize
+                                    Form</button>
                             </div>
                         </div>
                     </div>
@@ -289,16 +416,16 @@
             let w = canvas.width = window.innerWidth;
             let h = canvas.height = window.innerHeight;
             const particles = [];
-            for(let i=0; i<80; i++) particles.push({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, size: Math.random()*1.5 });
+            for (let i = 0; i < 80; i++) particles.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, size: Math.random() * 1.5 });
 
             function draw() {
-                ctx.clearRect(0,0,w,h);
+                ctx.clearRect(0, 0, w, h);
                 ctx.fillStyle = 'rgba(255,255,255,0.4)';
                 particles.forEach(p => {
                     p.x += p.vx; p.y += p.vy;
-                    if(p.x<0 || p.x>w) p.vx*=-1;
-                    if(p.y<0 || p.y>h) p.vy*=-1;
-                    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
                 });
                 requestAnimationFrame(draw);
             }
@@ -321,42 +448,42 @@
 
             const loader = new THREE.FontLoader();
             loader.load('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/fonts/helvetiker_bold.typeface.json', (font) => {
-                const geometry = new THREE.TextGeometry('JP', { 
-                  font, 
-                  size: 1.1, 
-                  height: 0.18, 
-                  bevelEnabled: true, 
-                  bevelThickness: 0.05, 
-                  bevelSize: 0.04,
-                  bevelSegments: 8 
+                const geometry = new THREE.TextGeometry('JP', {
+                    font,
+                    size: 1.1,
+                    height: 0.18,
+                    bevelEnabled: true,
+                    bevelThickness: 0.05,
+                    bevelSize: 0.04,
+                    bevelSegments: 8
                 });
                 geometry.center();
-                const material = new THREE.MeshStandardMaterial({ 
-                  color: 0xffffff, 
-                  wireframe: true, 
-                  emissive: 0xffffff, 
-                  emissiveIntensity: 1.5,
-                  transparent: true,
-                  opacity: 0.8
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0xffffff,
+                    wireframe: true,
+                    emissive: 0xffffff,
+                    emissiveIntensity: 1.5,
+                    transparent: true,
+                    opacity: 0.8
                 });
                 const mesh = new THREE.Mesh(geometry, material);
                 scene.add(mesh);
 
                 document.getElementById('initialize-text').innerText = 'Enter Experience';
                 document.getElementById('initialize-text').classList.replace('text-white/40', 'text-white');
-                
+
                 const animate = () => {
                     requestAnimationFrame(animate);
                     const time = Date.now() * 0.001;
-                    
+
                     // Rotation
                     mesh.rotation.y += 0.015;
                     mesh.rotation.x = Math.sin(time) * 0.15;
                     mesh.rotation.z = Math.cos(time * 0.5) * 0.05;
-                    
+
                     // Pulsing Glow
                     material.emissiveIntensity = 1.2 + Math.sin(time * 2.5) * 0.8;
-                    
+
                     renderer.render(scene, camera);
                 };
                 animate();
@@ -372,9 +499,9 @@
             const contact = document.getElementById('contact-section');
             if (!contact) return;
             const rect = contact.getBoundingClientRect();
-            
+
             const isOverWhite = rect.top <= 120;
-            
+
             if (isOverWhite) {
                 // DARK THEME (Contrast against white section)
                 header.style.background = 'rgba(0, 0, 0, 0.9)';
@@ -442,7 +569,7 @@
 
             const menuBtn = document.getElementById('menu-toggle');
             const dropdown = document.getElementById('dropdown-menu');
-            
+
             const closeMenu = () => {
                 dropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
                 dropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
@@ -491,7 +618,7 @@
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
+
                 // UI Loading state
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = '0.5';
@@ -549,6 +676,7 @@
             initUI();
         });
     </script>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
