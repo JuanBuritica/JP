@@ -9,6 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -17,11 +20,12 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                        display: ['Outfit', 'sans-serif'],
                     },
                     colors: {
                         premium: {
-                            dark: '#121212',
+                            dark: '#000000',
                             charcoal: '#181A1D',
                             accent: '#1A1F71', // Sophisticated Visa Blue
                             accentLight: '#2F358C',
@@ -52,7 +56,9 @@
 </head>
 
 <body class="selection:bg-white selection:text-black bg-premium-dark">
-    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-[3000]"></canvas>
+    <div class="noise-overlay"></div>
+
+    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-[3000] opacity-80"></canvas>
 
     <div id="intro-overlay"
         class="fixed inset-0 bg-premium-dark z-[2000] flex flex-col items-center justify-center cursor-pointer transition-all duration-[1s] ease-[cubic-bezier(0.85,0,0.15,1)]">
@@ -62,9 +68,9 @@
                 <div id="three-logo-container" class="relative z-10 w-full h-full"></div>
             </div>
             <div class="space-y-6">
-                <h2 class="text-xs tracking-[1em] font-medium uppercase text-white/40 ml-[1em]">JP BURITICÁ</h2>
-                <div class="h-px w-12 bg-white/20 mx-auto"></div>
-                <p id="initialize-text" class="text-[9px] tracking-[0.4em] font-bold uppercase text-white/20">
+                <h2 class="text-xs tracking-[1em] font-medium uppercase text-white/60 ml-[1em]">JP BURITICÁ</h2>
+                <div class="h-px w-12 bg-white/40 mx-auto"></div>
+                <p id="initialize-text" class="text-[9px] tracking-[0.4em] font-bold uppercase text-white/40">
                     Initializing System...
                 </p>
             </div>
@@ -88,7 +94,7 @@
                     class="header-text text-[13px] font-bold tracking-[0.3em] uppercase transition-colors duration-500 leading-none">JP
                     BURITICÁ</span>
                 <span
-                    class="header-text text-[8px] tracking-[0.2em] uppercase font-medium mt-1.5 transition-colors duration-500 opacity-40">Analyst, Technical Solutions</span>
+                    class="header-text text-[8px] tracking-[0.2em] uppercase font-medium mt-1.5 transition-colors duration-500 text-white">Analyst, Technical Solutions</span>
             </div>
         </div>
 
@@ -132,47 +138,44 @@
                             <img src="https://lh3.googleusercontent.com/d/1o2G0PF8h4YiGlKuTLpi59YhQy2DR4-Q4"
                                 class="w-full h-full object-cover grayscale opacity-80 brightness-90 transition-all duration-[2s] group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
                                 alt="Juan Pablo Buriticá Portrait">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-premium-dark/80 via-transparent to-transparent">
-                            </div>
-                            <div class="absolute bottom-12 left-10 space-y-4">
+                            <div class="absolute bottom-12 left-10 space-y-6">
                                 <div class="flex items-center gap-4">
-                                    <div class="w-8 h-px bg-white/40"></div>
-                                    <p class="text-[9px] tracking-[0.4em] uppercase font-bold text-white/60">Analyst, Technical Solutions</p>
+                                    <div class="w-8 h-px bg-white/80"></div>
+                                    <p class="text-[9px] tracking-[0.4em] uppercase font-bold text-white font-display">Analyst, Technical Solutions</p>
                                 </div>
-                                <h1 class="text-6xl tracking-premium-tight uppercase leading-[0.85] font-light">
-                                    JUAN PABLO<br><span class="font-bold">BURITICÁ</span>
+                                <h1 class="text-7xl tracking-tight leading-[0.9] font-normal text-white">
+                                    JUAN PABLO<br><span class="font-serif italic text-white/90">BURITICÁ</span>
                                 </h1>
                             </div>
                         </div>
                         
                         <div class="px-2">
-                             <h4 class="text-[10px] uppercase tracking-premium-wide font-bold text-white/30 mb-4">Academic Background</h4>
-                             <p class="text-[13px] font-light text-white/70 tracking-wide border-l border-premium-accent/40 pl-4">
+                             <h4 class="text-[10px] uppercase tracking-premium-wide font-bold text-white/50 mb-4 font-display">Academic Background</h4>
+                             <p class="text-[14px] font-light text-white/95 tracking-wide border-l border-premium-accent/40 pl-4 font-display">
                                 <span class="font-bold text-white">MSc in Artificial Intelligence</span><br>
-                                Universidad de los Andes (2025 — 2026 · In Progress)
+                                <span class="text-white/80">Universidad de los Andes (2025 — 2026 · In Progress)</span>
                              </p>
                         </div>
 
                         <!-- Refined Skills Grid -->
                         <div class="grid grid-cols-2 gap-x-12 gap-y-16 pt-16 border-t border-white/10 relative">
-                            <div class="absolute -top-px left-0 w-16 h-px bg-white/40"></div>
+                            <div class="absolute -top-px left-0 w-16 h-px bg-white/60"></div>
                             <div class="space-y-12">
-                                <h4 class="text-[10px] uppercase tracking-premium-wide font-bold text-white/40">Technical Core</h4>
-                                <ul class="space-y-4">
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">REST APIs, Java, C/C++</li>
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">Cybersource / Auth.net</li>
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">SQL (Data Validation)</li>
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">ERP & CRM Systems</li>
+                                <h4 class="text-[10px] uppercase tracking-premium-wide font-bold text-white/50 font-display">Technical Core</h4>
+                                <ul class="space-y-5">
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">REST APIs, Java, C/C++</li>
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">Cybersource / Auth.net</li>
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">SQL (Data Validation)</li>
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">ERP & CRM Systems</li>
                                 </ul>
                             </div>
                             <div class="space-y-12">
-                                <h4 class="text-[10px] uppercase tracking-premium-wide font-bold text-white/40">Solutions & Data</h4>
-                                <ul class="space-y-4">
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">Level-3 Technical Support</li>
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">Power BI & Analytics</li>
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">Workflow Automation</li>
-                                    <li class="text-[13px] font-light text-white/70 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all">Applied AI (MSc Focused)</li>
+                                <h4 class="text-[10px] uppercase tracking-premium-wide font-bold text-white/50 font-display">Solutions & Data</h4>
+                                <ul class="space-y-5">
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">Level-3 Technical Support</li>
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">Power BI & Analytics</li>
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">Workflow Automation</li>
+                                    <li class="text-[13px] font-light text-white/90 tracking-wide border-l border-white/10 pl-4 hover:border-premium-accent transition-all font-display">Applied AI (MSc Focused)</li>
                                 </ul>
                             </div>
                         </div>
@@ -180,14 +183,14 @@
 
                     <div class="space-y-32 pt-16 lg:pt-32">
                         <div class="relative">
-                            <p class="text-4xl font-light text-white/90 leading-tight tracking-premium-tight">
-                                Resolving high-complexity <span class="font-serif italic">Level-3 incidents</span> and ensuring technical reliability within the global Cybersource ecosystem.
+                            <p class="text-5xl font-light text-white/95 leading-[1.2] tracking-tight font-display">
+                                Resolving high-complexity <span class="font-serif italic text-white">Level-3 incidents</span> and ensuring technical reliability within the global Cybersource ecosystem.
                             </p>
                         </div>
 
                         <div class="space-y-16">
                             <div class="flex items-center justify-between border-b border-white/5 pb-6">
-                                <h3 id="curriculum-section" class="text-[11px] uppercase tracking-premium-wide font-bold text-white/30 scroll-mt-40">Curriculum Vitae</h3>
+                                <h3 id="curriculum-section" class="text-[11px] uppercase tracking-premium-wide font-bold text-white/50 scroll-mt-40">Curriculum Vitae</h3>
                                 <a href="https://drive.google.com/uc?export=download&id=1TKG00hrfge-rzBQvMB8kqTWKdrwEXma-" class="flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/10 hover:border-premium-accent/50 hover:bg-premium-accent/5 text-[9px] uppercase tracking-[0.2em] font-bold text-white transition-all group">
                                     <i data-lucide="download" class="w-3.5 h-3.5 text-premium-accent group-hover:-translate-y-0.5 transition-transform"></i>
                                     Download CV
@@ -208,16 +211,16 @@
                 <div class="grid lg:grid-cols-12 gap-32 items-stretch">
                     <div class="lg:col-span-5 flex flex-col justify-center space-y-20">
                         <div class="space-y-10">
-                            <h2 class="text-8xl font-light tracking-premium-tight leading-[0.85] text-premium-dark">
+                            <h2 class="text-9xl font-light tracking-tighter leading-[0.8] text-premium-dark uppercase">
                                 LET'S<br>
-                                <span class="font-serif italic">WORK</span><br>
+                                <span class="font-serif italic lowercase">work</span><br>
                                 TOGETHER
                             </h2>
-                            <p class="text-xl font-light text-premium-dark/60 max-w-sm">Resolving complex global incidents and providing expert Level-3 technical support at <a href="https://www.visa.com" target="_blank" class="text-premium-accent font-bold hover:underline decoration-premium-accent underline-offset-4">Visa</a>.</p>
+                            <p class="text-xl font-light text-premium-dark/80 max-w-sm font-display">Resolving complex global incidents and providing expert Level-3 technical support at <a href="https://www.visa.com" target="_blank" class="text-premium-accent font-bold hover:underline decoration-premium-accent underline-offset-4">Visa</a>.</p>
                         </div>
-                        <div class="pt-12 border-t border-premium-dark/5 space-y-16">
+                        <div class="pt-12 border-t border-premium-dark/10 space-y-16">
                             <div>
-                                <p class="text-[9px] uppercase tracking-premium-wide font-bold opacity-30 mb-4">Direct Message</p>
+                                <p class="text-[9px] uppercase tracking-premium-wide font-bold opacity-50 mb-4">Direct Message</p>
                                 <a href="mailto:juanpabloburiticaruiz@gmail.com"
                                     class="text-2xl font-medium hover:text-premium-accent transition-colors break-words underline-offset-8 decoration-1">
                                     juanpabloburiticaruiz@gmail.com
@@ -253,21 +256,21 @@
                                     <input type="hidden" name="access_key" value="79050d99-e386-4b36-9686-3fd1b16a1ccd">
 
                                     <div class="space-y-6">
-                                        <label class="text-[10px] uppercase tracking-premium-wide font-bold text-premium-dark/40">Full Name</label>
+                                        <label class="text-[10px] uppercase tracking-premium-wide font-bold text-premium-dark/60">Full Name</label>
                                         <input type="text" name="name" required
-                                            class="w-full bg-transparent border-b border-premium-dark/10 py-5 focus:outline-none focus:border-premium-dark transition-all text-premium-dark text-lg font-light"
+                                            class="w-full bg-transparent border-b border-premium-dark/20 py-5 focus:outline-none focus:border-premium-dark transition-all text-premium-dark text-lg font-light"
                                             placeholder="Enter your full name">
                                     </div>
                                     <div class="space-y-6">
-                                        <label class="text-[10px] uppercase tracking-premium-wide font-bold text-premium-dark/40">Email Address</label>
+                                        <label class="text-[10px] uppercase tracking-premium-wide font-bold text-premium-dark/60">Email Address</label>
                                         <input type="email" name="email" required
-                                            class="w-full bg-transparent border-b border-premium-dark/10 py-5 focus:outline-none focus:border-premium-dark transition-all text-premium-dark text-lg font-light"
+                                            class="w-full bg-transparent border-b border-premium-dark/20 py-5 focus:outline-none focus:border-premium-dark transition-all text-premium-dark text-lg font-light"
                                             placeholder="your@email.com">
                                     </div>
                                     <div class="space-y-6">
-                                        <label class="text-[10px] uppercase tracking-premium-wide font-bold text-premium-dark/40">Project Inquiry</label>
+                                        <label class="text-[10px] uppercase tracking-premium-wide font-bold text-premium-dark/60">Project Inquiry</label>
                                         <textarea name="message" rows="3" required
-                                            class="w-full bg-transparent border-b border-premium-dark/10 py-5 focus:outline-none focus:border-premium-dark transition-all text-premium-dark text-lg font-light resize-none"
+                                            class="w-full bg-transparent border-b border-premium-dark/20 py-5 focus:outline-none focus:border-premium-dark transition-all text-premium-dark text-lg font-light resize-none"
                                             placeholder="Tell me about your project visions..."></textarea>
                                     </div>
                                     <div class="pt-8">
@@ -315,7 +318,7 @@
             { firm: 'Sutherland Global Services', role: 'Senior Associate / Lead – CX & BI Reporting', period: 'Dec 2020 — Oct 2023', desc: 'Led 15+ analytics and BI reporting projects across LATAM, automating dashboards via SQL, DAX, and Power BI.' }
         ];
 
-        let particleColor = 'rgba(255,255,255,0.6)';
+        let particleColor = 'rgba(255,255,255,1)';
 
         const initParticles = () => {
             const canvas = document.getElementById('particle-canvas');
@@ -436,7 +439,7 @@
                 dropdownMenu.classList.remove('bg-white/95');
                 dropdownMenu.classList.add('bg-premium-dark/90', 'backdrop-blur-xl');
                 dropdownMenu.querySelectorAll('.menu-link').forEach(link => link.style.color = '#fff');
-                particleColor = 'rgba(0,0,0,0.4)';
+                particleColor = 'rgba(0,0,0,0.8)';
             } else {
                 // DARK SECTION THEME -> Header becomes WHITE GLASS
                 header.classList.remove('bg-premium-dark/70', 'bg-premium-dark/90', 'bg-premium-dark/95', 'border-white/20');
@@ -454,7 +457,7 @@
                 dropdownMenu.classList.remove('bg-premium-dark/90', 'bg-premium-dark/95');
                 dropdownMenu.classList.add('bg-white/95', 'backdrop-blur-xl');
                 dropdownMenu.querySelectorAll('.menu-link').forEach(link => link.style.color = '#000');
-                particleColor = 'rgba(255,255,255,0.6)';
+                particleColor = 'rgba(255,255,255,1)';
             }
         };
 
@@ -484,12 +487,12 @@
                         <div class="space-y-5">
                             <div class="flex flex-col gap-1">
                                 <div class="flex justify-between items-end">
-                                    <h4 class="text-3xl font-light tracking-premium-tight text-white group-hover:text-premium-accent transition-colors duration-500">${exp.firm}</h4>
-                                    <span class="text-[9px] font-bold text-white/30 uppercase tracking-widest pb-1">${exp.period}</span>
+                                    <h4 class="text-3xl font-light tracking-tight text-white group-hover:text-premium-accent transition-colors duration-500 font-serif lowercase italic">${exp.firm}</h4>
+                                    <span class="text-[9px] font-bold text-white/50 uppercase tracking-widest pb-1 font-display">${exp.period}</span>
                                 </div>
-                                <p class="text-[11px] font-bold uppercase tracking-premium-wide ${isActive ? 'text-premium-accent' : 'text-white/40'} transition-colors">${exp.role}</p>
+                                <p class="text-[11px] font-bold uppercase tracking-premium-wide text-white/80 transition-colors font-display">${exp.role}</p>
                             </div>
-                            <p class="text-[13px] font-light text-white/50 leading-relaxed max-w-lg group-hover:text-white/80 transition-colors duration-500">${exp.desc}</p>
+                            <p class="text-[13px] font-light text-white/80 leading-relaxed max-w-lg group-hover:text-white transition-colors duration-500 font-display">${exp.desc}</p>
                         </div>
                     </div>`;
             });

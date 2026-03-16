@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Master Projects | JP</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -14,11 +17,12 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                        display: ['Outfit', 'sans-serif'],
                     },
                     colors: {
                         premium: {
-                            dark: '#121212',
+                            dark: '#000000',
                             charcoal: '#181A1D',
                             accent: '#506C83',
                             border: 'rgba(255, 255, 255, 0.1)',
@@ -48,7 +52,9 @@
 </head>
 
 <body class="selection:bg-white selection:text-black bg-premium-dark">
-    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-[3000]"></canvas>
+    <div class="noise-overlay"></div>
+
+    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-[3000] opacity-80"></canvas>
 
     <!-- Header -->
     <header id="main-header"
@@ -66,7 +72,7 @@
                     class="header-text text-[13px] font-bold tracking-[0.3em] uppercase transition-colors duration-500 leading-none">JP
                     BURITICÁ</span>
                 <span
-                    class="header-text text-[8px] tracking-[0.2em] uppercase font-medium mt-1.5 transition-colors duration-500 opacity-40">SOFTWARE
+                    class="header-text text-[8px] tracking-[0.2em] uppercase font-medium mt-1.5 transition-colors duration-500 text-white">SOFTWARE
                     ENGINEER</span>
             </div>
         </a>
@@ -103,9 +109,9 @@
     <main class="pt-64 px-6 min-h-screen relative z-10">
         <div class="container mx-auto max-w-6xl reveal-on-scroll active">
             <div class="space-y-4 mb-24">
-                <span class="text-[10px] uppercase tracking-premium-wide font-bold text-white/40">Portfolio Archive</span>
-                <h1 class="text-7xl font-light uppercase tracking-premium-tight">
-                    MASTER <span class="font-serif italic text-white/60">PROJECTS</span>
+                <span class="text-[10px] uppercase tracking-premium-wide font-bold text-white/60 font-display">Portfolio Archive</span>
+                <h1 class="text-8xl font-normal uppercase tracking-tighter leading-[0.9]">
+                    MASTER <span class="font-serif italic text-white/95">PROJECTS</span>
                 </h1>
             </div>
 
@@ -172,12 +178,12 @@
                         <i data-lucide="arrow-up-right" class="w-8 h-8 text-white/60"></i>
                     </div>
                     <div class="space-y-6 relative z-10">
-                        <h3 class="text-4xl font-light uppercase tracking-premium-tight group-hover:text-premium-accent transition-all duration-500">${proj.name}</h3>
-                        <p class="text-white/40 font-light leading-relaxed group-hover:text-white/70 transition-all duration-500 max-w-sm">
+                        <h3 class="text-4xl font-normal tracking-tighter group-hover:text-premium-accent transition-all duration-500 font-serif italic lowercase text-white">${proj.name}</h3>
+                        <p class="text-white/80 font-light leading-relaxed group-hover:text-white transition-all duration-500 max-w-sm font-display">
                             ${proj.description}
                         </p>
                         <div class="pt-6 flex items-center gap-3">
-                            <span class="text-[9px] uppercase tracking-premium-wide font-bold border-b border-white/10 pb-2 group-hover:border-white transition-all duration-500 px-1">Explore Project</span>
+                            <span class="text-[9px] uppercase tracking-premium-wide font-bold opacity-70 group-hover:opacity-100 border-b border-white/10 pb-2 group-hover:border-white transition-all duration-500 px-1 font-display">Explore Project</span>
                         </div>
                     </div>
                 `;
@@ -217,7 +223,7 @@
             document.addEventListener('click', closeMenu);
         };
 
-        let particleColor = 'rgba(255,255,255,0.6)';
+        let particleColor = 'rgba(255,255,255,1)';
 
         const initParticles = () => {
             const canvas = document.getElementById('particle-canvas');
@@ -276,7 +282,7 @@
                     menuBtn.classList.add('bg-white/10', 'border-white/20');
                     menuBtn.style.color = '#fff';
                     
-                    particleColor = 'rgba(0,0,0,0.4)';
+                    particleColor = 'rgba(0,0,0,0.8)';
                 } else {
                     // DARK SECTION THEME -> Header becomes WHITE GLASS
                     header.classList.remove('bg-premium-dark/70', 'bg-premium-dark/80', 'border-white/20');
@@ -291,7 +297,7 @@
                     menuBtn.classList.add('bg-black/5', 'border-black/10');
                     menuBtn.style.color = '#000';
                     
-                    particleColor = 'rgba(255,255,255,0.6)';
+                    particleColor = 'rgba(255,255,255,1)';
                 }
             });
         };
